@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class mains extends UserMainCode {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("enter string1");
+		String string1 = scan.nextLine();
+		System.out.println("enter string2");
+		String string2 = scan.nextLine();
+		getSubstring(string1, string2);
+		scan.close();
+	}
+}
+class UserMainCode {
+	static int getSubstring(String string1, String string2) {
+		int temp = 0;
+		String[] result = new String[string2.length()];
+		int count = 0;
+		int chars = string1.length() / string2.length();
+		for (int i = 0; i < string1.length(); i = i + chars) {
+			String part = string1.substring(i, i + chars);
+			result[temp] = part;
+			temp++;
+		}
+		for (int i = 0; i < result.length; i++)
+			if (result[i].equals(string2))
+				count++;
+		System.out.println(count);
+		return count;
+	}
+}
+
